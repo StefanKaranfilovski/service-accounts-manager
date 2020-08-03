@@ -7,8 +7,8 @@
     <ProjectGuid>{9A6AF2F8-6B1B-4C29-B069-BB8D5E7C771F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NavettiClientsAccountsStatus.NinjectBindings</RootNamespace>
-    <AssemblyName>NavettiClientsAccountsStatus.NinjectBindings</AssemblyName>
+    <RootNamespace>ServiceAccountsManager.NinjectBindings</RootNamespace>
+    <AssemblyName>ServiceAccountsManager.NinjectBindings</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -83,11 +83,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Services.Contracts\Services.Contracts.csproj">
-      <Project>{CB1B5137-DF7A-4611-84C1-93AF6C2E5078}</Project>
+      <Project>{cb1b5137-df7a-4611-84c1-93af6c2e5078}</Project>
       <Name>Services.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Business\Services.Implementation\Services.Implementation.csproj">
-      <Project>{71240A70-4B69-4F18-9620-B9E13E2D38A9}</Project>
+      <Project>{71240a70-4b69-4f18-9620-b9e13e2d38a9}</Project>
       <Name>Services.Implementation</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Data\Data.Contracts\Data.Contracts.csproj">

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace NavettiClientsAccountsStatus.DomainModel
+namespace ServiceAccountsManager.DomainModel
 {
     public class Client : ClientIdentifier
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NavettiClientsAccountsStatus.Services.Contracts
+namespace ServiceAccountsManager.Services.Contracts
 {
     public interface IAccountService
     {

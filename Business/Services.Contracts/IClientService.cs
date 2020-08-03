@@ -1,7 +1,7 @@
-﻿using NavettiClientsAccountsStatus.DomainModel;
+﻿using ServiceAccountsManager.DomainModel;
 using System.Collections.Generic;
 
-namespace NavettiClientsAccountsStatus.Services.Contracts
+namespace ServiceAccountsManager.Services.Contracts
 {
     public interface IClientService
     {

@@ -1,12 +1,12 @@
-﻿using NavettiClientsAccountsStatus.Data.Contracts;
-using NavettiClientsAccountsStatus.Data.Implementation;
-using NavettiClientsAccountsStatus.Services.Contracts;
-using NavettiClientsAccountsStatus.Services.Implementation;
+﻿using ServiceAccountsManager.Data.Contracts;
+using ServiceAccountsManager.Data.Implementation;
+using ServiceAccountsManager.Services.Contracts;
+using ServiceAccountsManager.Services.Implementation;
 using Ninject;
 using System;
 using System.Collections.Generic;
 
-namespace NavettiClientsAccountsStatus.Web.App_Start
+namespace ServiceAccountsManager.Web.App_Start
 {
     public class NinjectResolver : System.Web.Mvc.IDependencyResolver
     {

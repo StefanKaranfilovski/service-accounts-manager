@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NavettiClientsAccountsStatus.DomainModel
+namespace ServiceAccountsManager.DomainModel
 {
     public class Account
     {

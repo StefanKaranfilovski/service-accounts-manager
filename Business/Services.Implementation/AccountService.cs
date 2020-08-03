@@ -1,8 +1,8 @@
-﻿using NavettiClientsAccountsStatus.Data.Contracts;
-using NavettiClientsAccountsStatus.Services.Contracts;
+﻿using ServiceAccountsManager.Data.Contracts;
+using ServiceAccountsManager.Services.Contracts;
 using System;
 
-namespace NavettiClientsAccountsStatus.Services.Implementation
+namespace ServiceAccountsManager.Services.Implementation
 {
     public class AccountService : IAccountService
     {

@@ -1,9 +1,9 @@
-﻿using NavettiClientsAccountsStatus.Data.Contracts;
-using NavettiClientsAccountsStatus.Data.Implementation.Base;
+﻿using ServiceAccountsManager.Data.Contracts;
+using ServiceAccountsManager.Data.Implementation.Base;
 using System;
 using Dapper;
 
-namespace NavettiClientsAccountsStatus.Data.Implementation
+namespace ServiceAccountsManager.Data.Implementation
 {
     public class AccountRepository : BaseRepository, IAccountRepository
     {

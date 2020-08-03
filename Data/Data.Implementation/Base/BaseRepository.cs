@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 
-namespace NavettiClientsAccountsStatus.Data.Implementation.Base
+namespace ServiceAccountsManager.Data.Implementation.Base
 {
     public class BaseRepository
     {

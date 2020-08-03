@@ -2,7 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 
-namespace NavettiClientsAccountsStatus.Extensions.Results
+namespace ServiceAccountsManager.Extensions.Results
 {
     public class JsonNetResult : JsonResult
     {

@@ -1,9 +1,9 @@
-﻿using NavettiClientsAccountsStatus.Data.Contracts;
-using NavettiClientsAccountsStatus.DomainModel;
-using NavettiClientsAccountsStatus.Services.Contracts;
+﻿using ServiceAccountsManager.Data.Contracts;
+using ServiceAccountsManager.DomainModel;
+using ServiceAccountsManager.Services.Contracts;
 using System.Collections.Generic;
 
-namespace NavettiClientsAccountsStatus.Services.Implementation
+namespace ServiceAccountsManager.Services.Implementation
 {
     public class ClientService : IClientService
     {

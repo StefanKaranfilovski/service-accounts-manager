@@ -7,8 +7,8 @@
     <ProjectGuid>{CACB8313-FD1C-41A1-AAF3-2122153441A0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NavettiClientsAccountsStatus.Data.Contracts</RootNamespace>
-    <AssemblyName>NavettiClientsAccountsStatus.Data.Contracts</AssemblyName>
+    <RootNamespace>ServiceAccountsManager.Data.Contracts</RootNamespace>
+    <AssemblyName>ServiceAccountsManager.Data.Contracts</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\DomainModel\DomainModel.csproj">
-      <Project>{9B0E918B-50AC-46DB-B4F1-76C7381A4C81}</Project>
+      <Project>{9b0e918b-50ac-46db-b4f1-76c7381a4c81}</Project>
       <Name>DomainModel</Name>
     </ProjectReference>
   </ItemGroup>

@@ -1,11 +1,11 @@
 ﻿using Dapper;
-using NavettiClientsAccountsStatus.Data.Contracts;
-using NavettiClientsAccountsStatus.Data.Implementation.Base;
-using NavettiClientsAccountsStatus.DomainModel;
+using ServiceAccountsManager.Data.Contracts;
+using ServiceAccountsManager.Data.Implementation.Base;
+using ServiceAccountsManager.DomainModel;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NavettiClientsAccountsStatus.Data.Implementation
+namespace ServiceAccountsManager.Data.Implementation
 {
     public class ClientRepository : BaseRepository, IClientRepository
     {

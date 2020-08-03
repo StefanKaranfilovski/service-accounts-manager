@@ -7,8 +7,8 @@
     <ProjectGuid>{9B0E918B-50AC-46DB-B4F1-76C7381A4C81}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NavettiClientsAccountsStatus.DomainModel</RootNamespace>
-    <AssemblyName>NavettiClientsAccountsStatus.DomainModel</AssemblyName>
+    <RootNamespace>ServiceAccountsManager.DomainModel</RootNamespace>
+    <AssemblyName>ServiceAccountsManager.DomainModel</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

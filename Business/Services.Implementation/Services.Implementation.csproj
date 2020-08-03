@@ -7,8 +7,8 @@
     <ProjectGuid>{71240A70-4B69-4F18-9620-B9E13E2D38A9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NavettiClientsAccountsStatus.Services.Implementation</RootNamespace>
-    <AssemblyName>NavettiClientsAccountsStatus.Services.Implementation</AssemblyName>
+    <RootNamespace>ServiceAccountsManager.Services.Implementation</RootNamespace>
+    <AssemblyName>ServiceAccountsManager.Services.Implementation</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
