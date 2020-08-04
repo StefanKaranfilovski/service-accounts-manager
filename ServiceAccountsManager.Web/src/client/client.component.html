@@ -1,0 +1,22 @@
+﻿<div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+    <div *ngFor="let client of clients" class="card mb-3" id="{{ client.Id }}">
+        <div class="card-header bg-dark text-white">
+            {{ client.Name }}
+        </div>
+        <div class="card-body bg-light">
+            <div class="container-fluid">
+                <div class="row">
+                    <div *ngFor="let account of client.Accounts" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        <app-account [account]="account"
+                                     [currentUser]="currentUser"
+                                     [clientId]="client.Id"
+                                     (onUseAccountEmitter)="onUseAccount($event)"
+                                     (onReleaseAccountEmitter)="onReleaseAccount($event)"></app-account>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4 *ngIf="!loaded">Loading users...</h4>

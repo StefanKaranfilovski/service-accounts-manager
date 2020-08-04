@@ -1,0 +1,10 @@
+﻿<ul class="sidebar-nav">
+    <li class="sidebar-brand">
+        <a (click)="resetClientSelection()" href="#">
+            Clients
+        </a>
+    </li>
+    <li *ngFor="let client of clientsStatus">
+        <a [ngClass]="[ client.Checked ? 'sidebar-element-active' : '' ]" (click)="onClientClick(client.Id)" class="nav-link" href="#{{ client.Id }}">{{ client.Name }}</a>
+    </li>
+</ul>

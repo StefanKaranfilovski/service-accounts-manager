@@ -1,0 +1,13 @@
+﻿<app-navbar [currentUser]="currentUser" (toggleSidebar)="onToggleSidebar($event)"></app-navbar>
+
+<div id="wrapper" [ngClass]="{'toggled': showSidebar}">
+
+    <div id="sidebar-wrapper">
+        <app-sidebar></app-sidebar>
+    </div>
+
+    <div id="page-content-wrapper">
+        <app-client [currentUser]="currentUser"></app-client>
+    </div>
+
+</div>

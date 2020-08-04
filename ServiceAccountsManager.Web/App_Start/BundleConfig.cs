@@ -13,7 +13,7 @@ namespace ServiceAccountsManager.Web
                         "~/Scripts/libs/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/site.css"));
+                      "~/Content/Site.css"));
         }
     }
 }
