@@ -15,6 +15,7 @@ export class AccountComponent implements OnInit {
 
     @Output() onUseAccountEmitter = new EventEmitter<AccountEmitter>();
     @Output() onReleaseAccountEmitter = new EventEmitter<AccountEmitter>();
+    @Output() onDeleteAccountEmitter = new EventEmitter<AccountEmitter>();
 
     constructor(private _accountService: AccountService) {
 
@@ -49,6 +50,23 @@ export class AccountComponent implements OnInit {
             .subscribe(
                 () => {
                     this.onReleaseAccountEmitter.emit({
+                        clientId: this.clientId,
+                        accountId: accountId,
+                        usedBy: null,
+                        usedFrom: null
+                    });
+                },
+                (error) => {
+                    console.log(error);
+                }
+            );
+    }
+
+    deleteAccount(accountId: number): void {
+        this._accountService.delete(accountId)
+            .subscribe(
+                () => {
+                    this.onDeleteAccountEmitter.emit({
                         clientId: this.clientId,
                         accountId: accountId,
                         usedBy: null,

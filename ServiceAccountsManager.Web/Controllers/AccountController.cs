@@ -14,14 +14,20 @@ namespace ServiceAccountsManager.Web.Controllers
         }
 
         [HttpPost]
-        public void UseAccount(int accountId, string usedBy, DateTime usedFrom) {
+        public void Use(int accountId, string usedBy, DateTime usedFrom) {
             AccountService.Use(accountId, usedBy, usedFrom);
         }
 
         [HttpPost]
-        public void ReleaseAccount(int accountId, DateTime usedTo)
+        public void Release(int accountId, DateTime usedTo)
         {
             AccountService.Release(accountId, usedTo);
+        }
+
+        [HttpPost]
+        public void Delete(int accountId)
+        {
+            AccountService.Delete(accountId);
         }
     }
 }

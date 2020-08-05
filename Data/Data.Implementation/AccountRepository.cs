@@ -7,6 +7,15 @@ namespace ServiceAccountsManager.Data.Implementation
 {
     public class AccountRepository : BaseRepository, IAccountRepository
     {
+        public void Delete(int accountId)
+        {
+            using (var db = ConnectionString)
+            {
+                var data = new { accountId };
+                // TODO Delete record from DB
+            }
+        }
+
         public void Release(int accountId, DateTime usedTo)
         {
             using (var db = ConnectionString)

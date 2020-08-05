@@ -11,7 +11,15 @@
                                      [currentUser]="currentUser"
                                      [clientId]="client.Id"
                                      (onUseAccountEmitter)="onUseAccount($event)"
-                                     (onReleaseAccountEmitter)="onReleaseAccount($event)"></app-account>
+                                     (onReleaseAccountEmitter)="onReleaseAccount($event)"
+                                     (onDeleteAccountEmitter)="onDeleteAccount($event)"></app-account>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        <div class="card mb-2" style="height:215px;">
+                            <div class="card-body" style=" display: flex; align-self: center; align-items: center;">
+                                <button type="button" class="btn btn-dark btn-sm"><i class="material-icons">add</i></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

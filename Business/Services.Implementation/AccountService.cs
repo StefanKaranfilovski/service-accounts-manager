@@ -13,6 +13,11 @@ namespace ServiceAccountsManager.Services.Implementation
             AccountRepository = accountRepository;
         }
 
+        public void Delete(int accountId)
+        {
+            AccountRepository.Delete(accountId);
+        }
+
         public void Release(int accountId, DateTime usedTo)
         {
             AccountRepository.Release(accountId, usedTo);

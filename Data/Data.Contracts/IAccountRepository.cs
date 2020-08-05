@@ -7,5 +7,7 @@ namespace ServiceAccountsManager.Data.Contracts
         void Release(int accountId, DateTime usedTo);
 
         void Use(int accountId, string usedBy, DateTime usedFrom);
+
+        void Delete(int accountId);
     }
 }

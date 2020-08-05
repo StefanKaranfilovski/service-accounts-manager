@@ -36,6 +36,15 @@ export class ClientComponent implements OnInit {
         this.toggleAccountUsedBy(onReleaseAccountEmitter.clientId, onReleaseAccountEmitter.accountId, onReleaseAccountEmitter.usedBy, onReleaseAccountEmitter.usedFrom);
     }
 
+    onDeleteAccount(onDeleteAccountEmitter: AccountEmitter): void {
+        this.clients.forEach((currentClient) => {
+            if (currentClient.Id === onDeleteAccountEmitter.clientId) {
+                var index = currentClient.Accounts.findIndex(account => account.Id == onDeleteAccountEmitter.accountId);
+                currentClient.Accounts.splice(index, 1);
+            }
+        });
+    }
+
     toggleAccountUsedBy(clientId: number, accountId: number, username?: string, usedFromTime?: Date): void {
         this.clients.forEach((currentClient) => {
             if (clientId === currentClient.Id) {
