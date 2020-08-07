@@ -2,6 +2,8 @@
 import { Account } from '../common/models/account';
 import { AccountEmitter } from '../common/models/accountEmitter';
 import { AccountService } from './account.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ManageAccountModalComponent } from '../manageAccountModal/manageAccountModal.component';
 
 @Component({
     selector: 'app-account',
@@ -17,7 +19,7 @@ export class AccountComponent implements OnInit {
     @Output() onReleaseAccountEmitter = new EventEmitter<AccountEmitter>();
     @Output() onDeleteAccountEmitter = new EventEmitter<AccountEmitter>();
 
-    constructor(private _accountService: AccountService) {
+    constructor(private _accountService: AccountService, public dialog: MatDialog) {
 
     }
 
@@ -78,4 +80,14 @@ export class AccountComponent implements OnInit {
                 }
             );
     }
+
+    openManageAccountDialog(): void {
+        this.dialog.open(ManageAccountModalComponent, {
+            data: {
+                title: "Edit Account",
+                username: this.account.Username,
+                password: this.account.Password
+            }
+        });
+    };
 }

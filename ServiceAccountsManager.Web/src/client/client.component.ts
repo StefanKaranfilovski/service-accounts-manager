@@ -2,6 +2,8 @@
 import { ClientService } from '../common/services/client.service';
 import { Client } from '../common/models/client';
 import { AccountEmitter } from '../common/models/accountEmitter';
+import { MatDialog } from '@angular/material/dialog';
+import { ManageAccountModalComponent } from '../manageAccountModal/manageAccountModal.component';
 
 @Component({
     selector: 'app-client',
@@ -14,7 +16,7 @@ export class ClientComponent implements OnInit {
 
     @Input() currentUser: string;
 
-    constructor(private _clientService: ClientService) { }
+    constructor(private _clientService: ClientService, public dialog: MatDialog) { }
 
     ngOnInit() {
         this._clientService.getClients().subscribe(
@@ -56,5 +58,15 @@ export class ClientComponent implements OnInit {
                 });
             }
         });
-    }
+    };
+
+    openManageAccountDialog(): void {
+        this.dialog.open(ManageAccountModalComponent, {
+            data: {
+                title: "Create new Account",
+                username: "",
+                password: ""
+            }
+        });
+    };
 }
