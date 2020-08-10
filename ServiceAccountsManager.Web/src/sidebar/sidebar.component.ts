@@ -22,7 +22,7 @@ export class SidebarComponent implements OnInit {
                 });
             }
         });
-    }
+    };
 
     onClientClick(clientId: number): void {
         for (var i = 0, length = this.clientsStatus.length; i < length; i++) {
@@ -33,11 +33,11 @@ export class SidebarComponent implements OnInit {
                 currentEntry.Checked = false;
             }
         }
-    }
+    };
 
     resetClientSelection(): void {
         for (var i = 0, length = this.clientsStatus.length; i < length; i++) {
             this.clientsStatus[i].Checked = false;
         }
-    }
+    };
 }

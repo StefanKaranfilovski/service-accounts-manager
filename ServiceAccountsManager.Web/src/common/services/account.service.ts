@@ -9,7 +9,7 @@ export class AccountService {
 
     constructor(private _http: HttpClient) {
 
-    }
+    };
 
     use(accountId: number, usedBy: string, usedFrom: Date): Observable<object> {
         let data = {
@@ -19,7 +19,7 @@ export class AccountService {
         };
 
         return this._http.post('Account/Use', data);
-    }
+    };
 
     release(accountId: number, usedTo: Date): Observable<object> {
         let data = {
@@ -28,7 +28,7 @@ export class AccountService {
         };
 
         return this._http.post('Account/Release', data);
-    }
+    };
 
     delete(accountId: number) :Observable<object> {
         let data = {
@@ -36,5 +36,5 @@ export class AccountService {
         };
 
         return this._http.post('Account/Delete', data);
-    }
+    };
 }

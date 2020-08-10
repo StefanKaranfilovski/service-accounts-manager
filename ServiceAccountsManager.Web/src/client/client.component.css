@@ -1,1 +1,9 @@
-﻿
+﻿.card-style {
+    height: 215px;
+}
+
+    .card-style .card-body {
+        display: flex;
+        align-self: center;
+        align-items: center;
+    }

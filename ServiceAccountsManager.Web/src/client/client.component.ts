@@ -28,15 +28,15 @@ export class ClientComponent implements OnInit {
                 console.log(error);
             }
         );
-    }
+    };
 
     onUseAccount(onUseAccountEmitter: AccountEmitter): void {
         this.toggleAccountUsedBy(onUseAccountEmitter.clientId, onUseAccountEmitter.accountId, onUseAccountEmitter.usedBy, onUseAccountEmitter.usedFrom);
-    }
+    };
 
     onReleaseAccount(onReleaseAccountEmitter: AccountEmitter): void {
         this.toggleAccountUsedBy(onReleaseAccountEmitter.clientId, onReleaseAccountEmitter.accountId, onReleaseAccountEmitter.usedBy, onReleaseAccountEmitter.usedFrom);
-    }
+    };
 
     onDeleteAccount(onDeleteAccountEmitter: AccountEmitter): void {
         this.clients.forEach((currentClient) => {
@@ -45,7 +45,7 @@ export class ClientComponent implements OnInit {
                 currentClient.Accounts.splice(index, 1);
             }
         });
-    }
+    };
 
     toggleAccountUsedBy(clientId: number, accountId: number, username?: string, usedFromTime?: Date): void {
         this.clients.forEach((currentClient) => {

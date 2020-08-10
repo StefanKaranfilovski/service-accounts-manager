@@ -2,19 +2,31 @@
      class="card mb-2">
     <div class="card-body">
         <p>
-            <button *ngIf="!account.UsedBy" (click)="openManageAccountDialog()" type="button" class="btn btn-dark btn-sm"><i class="material-icons">content_paste</i></button>
-            <button *ngIf="account.UsedBy" type="button" class="btn btn-dark btn-sm" disabled><i class="material-icons">content_paste</i></button>
-            <button *ngIf="!account.UsedBy" (click)="deleteAccount(account.Id)" type="button" class="btn btn-dark btn-sm" style="float:right"><i class="material-icons">remove_circle_outline</i></button>
-            <button *ngIf="account.UsedBy" type="button" class="btn btn-dark btn-sm" style="float:right" disabled><i class="material-icons">remove_circle_outline</i></button>
+            <button (click)="openManageAccountDialog()" type="button" class="btn btn-dark btn-sm" [disabled]="account.UsedBy ? true : false">
+                <i class="material-icons">content_paste</i>
+            </button>
+
+            <button (click)="deleteAccount(account.Id)" type="button" class="btn btn-dark btn-sm float-right" [disabled]="account.UsedBy ? true : false">
+                <i class="material-icons">remove_circle_outline</i>
+            </button>
         </p>
         
         <p class="card-text">Username: <b>{{ account.Username }}</b></p>
         <p class="card-text">Password: <b>{{ account.Password }}</b></p>
     </div>
     <div class="card-footer bg-transparent">
-        <button *ngIf="!account.UsedBy" (click)="useAccount(account.Id)" type="button" class="btn btn-dark btn-sm"><i class="material-icons">flag</i></button>
-        <button *ngIf="account.UsedBy === currentUser" (click)="releaseAccount(account.Id)" type="button" class="btn btn-dark btn-sm"><i class="material-icons">clear</i></button>
-        <button *ngIf="account.UsedBy && account.UsedBy !== currentUser" type="button" class="btn btn-dark btn-sm" disabled><i class="material-icons">block</i></button>
+        <button *ngIf="!account.UsedBy" (click)="useAccount(account.Id)" type="button" class="btn btn-dark btn-sm">
+            <i class="material-icons">flag</i>
+        </button>
+
+        <button *ngIf="account.UsedBy === currentUser" (click)="releaseAccount(account.Id)" type="button" class="btn btn-dark btn-sm">
+            <i class="material-icons">clear</i>
+        </button>
+
+        <button *ngIf="account.UsedBy && account.UsedBy !== currentUser" type="button" class="btn btn-dark btn-sm" disabled>
+            <i class="material-icons">block</i>
+        </button>
+
         <span *ngIf="account.UsedBy" class="card-text float-right"><small>Used by: <b>{{ account.UsedBy }}</b> since <b>{{ account.UsedFrom | date: 'shortTime' }}</b></small></span>
     </div>
 </div>

@@ -17,7 +17,7 @@ import { ManageAccountModalComponent } from '../manageAccountModal/manageAccount
 
 import { UserService } from '../common/services/user.service';
 import { ClientService } from '../common/services/client.service';
-import { AccountService } from '../account//account.service';
+import { AccountService } from '../common/services/account.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({

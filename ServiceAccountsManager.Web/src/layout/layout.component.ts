@@ -12,7 +12,7 @@ export class LayoutComponent implements OnInit {
 
     constructor(private _userService: UserService) {
 
-    }
+    };
 
     ngOnInit() {
         this._userService.getCurrentUser().subscribe(
@@ -23,9 +23,9 @@ export class LayoutComponent implements OnInit {
                 console.log(error);
             }
         );
-    }
+    };
 
     onToggleSidebar(showSidebar: boolean){
         this.showSidebar = showSidebar;
-    }
+    };
 }

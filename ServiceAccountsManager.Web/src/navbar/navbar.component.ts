@@ -1,11 +1,11 @@
-﻿import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+﻿import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
     applicationName: string = 'Service Accounts Manager';
     showSidebar: boolean;
 
@@ -14,14 +14,10 @@ export class NavbarComponent implements OnInit {
 
     constructor() {
         this.showSidebar = true;
-    }
-
-    ngOnInit() {
-
-    }
+    };
 
     onToggleSidebar() {
         this.showSidebar = !this.showSidebar;
         this.toggleSidebar.emit(this.showSidebar);
-    }
+    };
 }

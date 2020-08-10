@@ -1,7 +1,7 @@
-﻿import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+﻿import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Account } from '../common/models/account';
 import { AccountEmitter } from '../common/models/accountEmitter';
-import { AccountService } from './account.service';
+import { AccountService } from '../common/services/account.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageAccountModalComponent } from '../manageAccountModal/manageAccountModal.component';
 
@@ -10,7 +10,9 @@ import { ManageAccountModalComponent } from '../manageAccountModal/manageAccount
     templateUrl: './account.component.html',
     styleUrls: ['./account.component.css']
 })
-export class AccountComponent implements OnInit {
+export class AccountComponent {
+    editDialogTitle: string = "Edit Account";
+
     @Input() account: Account;
     @Input() currentUser: string;
     @Input() clientId: number;
@@ -21,10 +23,7 @@ export class AccountComponent implements OnInit {
 
     constructor(private _accountService: AccountService, public dialog: MatDialog) {
 
-    }
-
-    ngOnInit() {
-    }
+    };
 
     useAccount(accountId: number): void {
         let usedFrom: Date = new Date();
@@ -43,7 +42,7 @@ export class AccountComponent implements OnInit {
                     console.log(error);
                 }
             );
-    }
+    };
 
     releaseAccount(accountId: number): void {
         let usedTo: Date = new Date();
@@ -62,7 +61,7 @@ export class AccountComponent implements OnInit {
                     console.log(error);
                 }
             );
-    }
+    };
 
     deleteAccount(accountId: number): void {
         this._accountService.delete(accountId)
@@ -79,12 +78,12 @@ export class AccountComponent implements OnInit {
                     console.log(error);
                 }
             );
-    }
+    };
 
     openManageAccountDialog(): void {
         this.dialog.open(ManageAccountModalComponent, {
             data: {
-                title: "Edit Account",
+                title: this.editDialogTitle,
                 username: this.account.Username,
                 password: this.account.Password
             }

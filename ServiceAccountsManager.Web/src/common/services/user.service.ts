@@ -10,5 +10,5 @@ export class UserService {
 
     getCurrentUser() {
         return this._http.get('User/GetCurrentUsername', { responseType: 'text' });
-    }
+    };
 }

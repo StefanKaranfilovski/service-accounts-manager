@@ -17,13 +17,13 @@ export class ClientService {
 
     constructor(private _http: HttpClient) {
 
-    }
+    };
 
     getClients(): Observable<Client[]> {
         return this._http.get<Client[]>('Client/GetAllClients', this.httpOptions);
-    }
+    };
 
     getClientsNames(): Observable<ClientIdentifier[]> {
         return this._http.get<ClientIdentifier[]>('Client/GetAllClientsNames', this.httpOptions);
-    }
+    };
 }
