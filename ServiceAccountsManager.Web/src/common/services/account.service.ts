@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Account } from '../models/account';
 
 @Injectable({
     providedIn: 'root'
@@ -28,6 +29,14 @@ export class AccountService {
         };
 
         return this._http.post('Account/Release', data);
+    };
+
+    save(account: Account): Observable<object> {
+        let data = {
+            account: account
+        };
+        
+        return this._http.post('Account/Save', data);
     };
 
     delete(accountId: number) :Observable<object> {

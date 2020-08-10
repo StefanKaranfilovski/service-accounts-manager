@@ -11,7 +11,7 @@ import { ManageAccountModalComponent } from '../manageAccountModal/manageAccount
     styleUrls: ['./account.component.css']
 })
 export class AccountComponent {
-    editDialogTitle: string = "Edit Account";
+    editAccountDialogTitle: string = "Edit Account";
 
     @Input() account: Account;
     @Input() currentUser: string;
@@ -83,9 +83,10 @@ export class AccountComponent {
     openManageAccountDialog(): void {
         this.dialog.open(ManageAccountModalComponent, {
             data: {
-                title: this.editDialogTitle,
+                title: this.editAccountDialogTitle,
                 username: this.account.Username,
-                password: this.account.Password
+                password: this.account.Password,
+                clientId: this.clientId
             }
         });
     };

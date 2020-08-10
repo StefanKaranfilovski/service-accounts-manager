@@ -1,12 +1,12 @@
 ﻿<h1 mat-dialog-title>{{ data.title }}</h1>
-<div mat-dialog-content style="width:400px">
-    <mat-form-field appearance="outline" style="width:100%">
+<div mat-dialog-content class="mat-dialog-content-options">
+    <mat-form-field appearance="outline">
         <mat-label>Username</mat-label>
         <input matInput [formControl]="username" required>
         <mat-error *ngIf="username.invalid">{{ getUsernamErrorMessage() }}</mat-error>
     </mat-form-field>
     <br />
-    <mat-form-field appearance="outline" style="width:100%">
+    <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
         <input matInput [formControl]="password" required>
         <mat-error *ngIf="password.invalid">{{ getPasswordErrorMessage() }}</mat-error>
@@ -14,5 +14,5 @@
 </div>
 <div mat-dialog-actions>
     <button mat-button mat-dialog-close>Close</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Save</button>
+    <button (click)="saveAccount()" mat-raised-button color="primary" [disabled]="isFormValid() ? false : true" cdkFocusInitial>Save</button>
 </div>

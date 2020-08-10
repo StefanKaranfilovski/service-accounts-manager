@@ -1,5 +1,6 @@
 ﻿export class Account {
-    Id: number;
+    Id?: number;
+    ClientId?: number;
     Username: string;
     Password: string;
     UsedBy?: string;

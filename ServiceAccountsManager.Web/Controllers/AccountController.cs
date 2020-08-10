@@ -1,4 +1,5 @@
-﻿using ServiceAccountsManager.Services.Contracts;
+﻿using ServiceAccountsManager.DomainModel;
+using ServiceAccountsManager.Services.Contracts;
 using System;
 using System.Web.Mvc;
 
@@ -22,6 +23,12 @@ namespace ServiceAccountsManager.Web.Controllers
         public void Release(int accountId, DateTime usedTo)
         {
             AccountService.Release(accountId, usedTo);
+        }
+
+        [HttpPost]
+        public void Save(Account account)
+        {
+            //AccountService.Delete(accountId);
         }
 
         [HttpPost]

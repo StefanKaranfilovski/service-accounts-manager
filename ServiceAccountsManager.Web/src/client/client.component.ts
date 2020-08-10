@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit, Input } from '@angular/core';
 import { ClientService } from '../common/services/client.service';
 import { Client } from '../common/models/client';
+import { Account } from '../common/models/account';
 import { AccountEmitter } from '../common/models/accountEmitter';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageAccountModalComponent } from '../manageAccountModal/manageAccountModal.component';
@@ -11,6 +12,7 @@ import { ManageAccountModalComponent } from '../manageAccountModal/manageAccount
     styleUrls: ['./client.component.css']
 })
 export class ClientComponent implements OnInit {
+    createAccountDialogTitle: string = "Create new Account";
     clients: Client[];
     loaded: boolean = false;
 
@@ -60,13 +62,24 @@ export class ClientComponent implements OnInit {
         });
     };
 
-    openManageAccountDialog(): void {
-        this.dialog.open(ManageAccountModalComponent, {
+    openManageAccountDialog(clientId: number): void {
+        let dialogReference = this.dialog.open(ManageAccountModalComponent, {
             data: {
-                title: "Create new Account",
+                title: this.createAccountDialogTitle,
                 username: "",
-                password: ""
+                password: "",
+                clientId: clientId
             }
+        });
+
+        dialogReference.afterClosed().subscribe(result => {
+            let castedResult = result as Account;
+
+            this.clients.forEach((currentClient) => {
+                if (currentClient.Id === castedResult.ClientId) {
+                    currentClient.Accounts.push(result);
+                }
+            });
         });
     };
 }
