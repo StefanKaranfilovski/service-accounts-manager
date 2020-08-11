@@ -27,10 +27,13 @@ namespace ServiceAccountsManager.Data.Implementation
             using (var db = ConnectionString)
             {
                 var data = new { accountId };
-                // TODO Delete record from DB
+                db.Execute(@"DELETE FROM AccountHistory
+                             WHERE AccountId = @accountId
+                             DELETE FROM Account
+                             WHERE Id = @accountId;", data);
             }
         }
-
+        
         public void Release(int accountId, DateTime usedTo)
         {
             using (var db = ConnectionString)

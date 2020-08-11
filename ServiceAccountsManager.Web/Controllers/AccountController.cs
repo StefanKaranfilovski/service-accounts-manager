@@ -5,6 +5,7 @@ using System.Web.Mvc;
 
 namespace ServiceAccountsManager.Web.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly IAccountService AccountService;
