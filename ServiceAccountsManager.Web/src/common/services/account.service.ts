@@ -31,12 +31,12 @@ export class AccountService {
         return this._http.post('Account/Release', data);
     };
 
-    add(account: Account): Observable<object> {
+    add(account: Account): Observable<number> {
         let data = {
             account: account
         };
         
-        return this._http.post('Account/Add', data);
+        return this._http.post<number>('Account/Add', data);
     };
 
     update(account: Account): Observable<object> {

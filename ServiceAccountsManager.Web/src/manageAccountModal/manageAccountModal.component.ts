@@ -45,7 +45,7 @@ export class ManageAccountModalComponent {
             this._accountService.add(account)
                 .subscribe(
                     (newAccountId) => {
-                        account.Id = newAccountId as unknown as number;
+                        account.Id = newAccountId;
                         this.dialogReference.close(account);
                     },
                     (error) => {
