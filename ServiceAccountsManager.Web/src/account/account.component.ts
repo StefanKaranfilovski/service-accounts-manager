@@ -81,13 +81,21 @@ export class AccountComponent {
     };
 
     openManageAccountDialog(): void {
-        this.dialog.open(ManageAccountModalComponent, {
+        let dialogReference = this.dialog.open(ManageAccountModalComponent, {
             data: {
                 title: this.editAccountDialogTitle,
                 username: this.account.Username,
                 password: this.account.Password,
-                clientId: this.clientId
+                clientId: this.clientId,
+                accountId: this.account.Id
             }
+        });
+
+        dialogReference.afterClosed().subscribe(result => {
+            let castedResult = result as Account;
+            
+            this.account.Username = castedResult.Username;
+            this.account.Password = castedResult.Password;
         });
     };
 }

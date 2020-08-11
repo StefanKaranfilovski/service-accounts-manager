@@ -13,11 +13,13 @@ export class ManageAccountModalComponent {
     username = new FormControl('', [Validators.required]);
     password = new FormControl('', [Validators.required]);
     clientId: number;
+    accountId?: number;
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogReference: MatDialogRef<ManageAccountModalComponent>, private _accountService: AccountService) {
         this.username.setValue(data.username);
         this.password.setValue(data.password);
         this.clientId = data.clientId;
+        this.accountId = data.accountId;
     };
 
     getUsernamErrorMessage() {
@@ -37,19 +39,39 @@ export class ManageAccountModalComponent {
     };
 
     saveAccount(): void {
+        let account = this.createSaveAccountObject();
+        
+        if (account.Id === undefined) {
+            this._accountService.add(account)
+                .subscribe(
+                    (newAccountId) => {
+                        account.Id = newAccountId as unknown as number;
+                        this.dialogReference.close(account);
+                    },
+                    (error) => {
+                        console.log(error);
+                    }
+                );
+        } else {
+            this._accountService.update(account)
+                .subscribe(
+                    () => {
+                        this.dialogReference.close(account);
+                    },
+                    (error) => {
+                        console.log(error);
+                    }
+                );
+        }       
+    };
+
+    private createSaveAccountObject(): Account {
         let account = new Account();
         account.Username = this.username.value;
         account.Password = this.password.value;
         account.ClientId = this.clientId;
-        
-        this._accountService.save(account)
-            .subscribe(
-                () => {
-                    this.dialogReference.close(account);
-                },
-                (error) => {
-                    console.log(error);
-                }
-            );
+        account.Id = this.accountId;
+
+        return account;
     };
 }

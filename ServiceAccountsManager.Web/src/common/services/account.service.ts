@@ -31,12 +31,20 @@ export class AccountService {
         return this._http.post('Account/Release', data);
     };
 
-    save(account: Account): Observable<object> {
+    add(account: Account): Observable<object> {
         let data = {
             account: account
         };
         
-        return this._http.post('Account/Save', data);
+        return this._http.post('Account/Add', data);
+    };
+
+    update(account: Account): Observable<object> {
+        let data = {
+            account: account
+        };
+
+        return this._http.post('Account/Update', data);
     };
 
     delete(accountId: number) :Observable<object> {

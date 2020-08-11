@@ -26,9 +26,15 @@ namespace ServiceAccountsManager.Web.Controllers
         }
 
         [HttpPost]
-        public void Save(Account account)
+        public int Add(Account account)
         {
-            //AccountService.Delete(accountId);
+            return AccountService.Add(account);
+        }
+
+        [HttpPost]
+        public void Update(Account account)
+        {
+            AccountService.Update(account);
         }
 
         [HttpPost]
