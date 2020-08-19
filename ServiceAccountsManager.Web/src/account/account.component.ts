@@ -3,7 +3,7 @@ import { Account } from '../common/models/account';
 import { AccountEmitter } from '../common/models/accountEmitter';
 import { AccountService } from '../common/services/account.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ManageAccountModalComponent } from '../manageAccountModal/manageAccountModal.component';
+import { ManageAccountDialogComponent } from '../manageAccountDialog/manageAccountDialog.component';
 
 @Component({
     selector: 'app-account',
@@ -81,7 +81,7 @@ export class AccountComponent {
     };
 
     openManageAccountDialog(): void {
-        let dialogReference = this.dialog.open(ManageAccountModalComponent, {
+        let dialogReference = this.dialog.open(ManageAccountDialogComponent, {
             data: {
                 title: this.editAccountDialogTitle,
                 username: this.account.Username,

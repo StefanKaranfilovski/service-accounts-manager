@@ -5,17 +5,17 @@ import { AccountService } from '../common/services/account.service';
 import { Account } from '../common/models/account';
 
 @Component({
-    selector: 'app-manage-account-modal',
-    templateUrl: './manageAccountModal.component.html',
-    styleUrls: ['./manageAccountModal.component.css']
+    selector: 'app-manage-account-dialog',
+    templateUrl: './manageAccountDialog.component.html',
+    styleUrls: ['./manageAccountDialog.component.css']
 })
-export class ManageAccountModalComponent {
+export class ManageAccountDialogComponent {
     username = new FormControl('', [Validators.required]);
     password = new FormControl('', [Validators.required]);
     clientId: number;
     accountId?: number;
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogReference: MatDialogRef<ManageAccountModalComponent>, private _accountService: AccountService) {
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogReference: MatDialogRef<ManageAccountDialogComponent>, private _accountService: AccountService) {
         this.username.setValue(data.username);
         this.password.setValue(data.password);
         this.clientId = data.clientId;

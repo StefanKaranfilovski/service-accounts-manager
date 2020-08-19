@@ -4,7 +4,7 @@ import { Client } from '../common/models/client';
 import { Account } from '../common/models/account';
 import { AccountEmitter } from '../common/models/accountEmitter';
 import { MatDialog } from '@angular/material/dialog';
-import { ManageAccountModalComponent } from '../manageAccountModal/manageAccountModal.component';
+import { ManageAccountDialogComponent } from '../manageAccountDialog/manageAccountDialog.component';
 
 @Component({
     selector: 'app-client',
@@ -63,7 +63,7 @@ export class ClientComponent implements OnInit {
     };
 
     openManageAccountDialog(clientId: number): void {
-        let dialogReference = this.dialog.open(ManageAccountModalComponent, {
+        let dialogReference = this.dialog.open(ManageAccountDialogComponent, {
             data: {
                 title: this.createAccountDialogTitle,
                 username: "",
