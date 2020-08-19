@@ -92,10 +92,11 @@ export class AccountComponent {
         });
 
         dialogReference.afterClosed().subscribe(result => {
-            let castedResult = result as Account;
-            
-            this.account.Username = castedResult.Username;
-            this.account.Password = castedResult.Password;
+            if (result !== "") {
+                let castedResult = result as Account;
+                this.account.Username = castedResult.Username;
+                this.account.Password = castedResult.Password;
+            }
         });
     };
 }
