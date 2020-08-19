@@ -74,7 +74,7 @@ export class ClientComponent implements OnInit {
 
         dialogReference.afterClosed().subscribe(result => {
             let castedResult = result as Account;
-
+            
             this.clients.forEach((currentClient) => {
                 if (currentClient.Id === castedResult.ClientId) {
                     currentClient.Accounts.push(result);

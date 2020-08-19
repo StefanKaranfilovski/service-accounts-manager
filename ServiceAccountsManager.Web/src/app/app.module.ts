@@ -14,6 +14,7 @@ import { AccountComponent } from '../account/account.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { ManageAccountDialogComponent } from '../manageAccountDialog/manageAccountDialog.component';
+import { DeleteAccountDialogComponent } from '../deleteAccountDialog/deleteAccountDialog.component';
 
 import { UserService } from '../common/services/user.service';
 import { ClientService } from '../common/services/client.service';
@@ -28,7 +29,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         SidebarComponent,
         AccountComponent,
         ClientComponent,
-        ManageAccountDialogComponent
+        ManageAccountDialogComponent,
+        DeleteAccountDialogComponent
     ],
     imports: [
         BrowserModule,
@@ -53,7 +55,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ],
     bootstrap: [AppComponent],
     entryComponents: [
-        ManageAccountDialogComponent
+        ManageAccountDialogComponent,
+        DeleteAccountDialogComponent
     ]
 })
 export class AppModule { }

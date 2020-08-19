@@ -6,7 +6,7 @@
                 <i class="material-icons">content_paste</i>
             </button>
 
-            <button (click)="deleteAccount(account.Id)" type="button" class="btn btn-dark btn-sm float-right" [disabled]="account.UsedBy ? true : false">
+            <button (click)="openDeleteAccountDialog()" type="button" class="btn btn-dark btn-sm float-right" [disabled]="account.UsedBy ? true : false">
                 <i class="material-icons">remove_circle_outline</i>
             </button>
         </p>

@@ -4,6 +4,8 @@ import { AccountEmitter } from '../common/models/accountEmitter';
 import { AccountService } from '../common/services/account.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageAccountDialogComponent } from '../manageAccountDialog/manageAccountDialog.component';
+import { DeleteAccountDialogComponent } from '../deleteAccountDialog/deleteAccountDialog.component';
+import { DeleteAccountEnum } from '../common/enums/deleteAccountEnum';
 
 @Component({
     selector: 'app-account',
@@ -63,13 +65,29 @@ export class AccountComponent {
             );
     };
 
-    deleteAccount(accountId: number): void {
-        this._accountService.delete(accountId)
+    openDeleteAccountDialog(): void {
+        let dialogReference = this.dialog.open(DeleteAccountDialogComponent, {
+            data: { }
+        });
+
+        dialogReference.afterClosed().subscribe(result => {
+            if (this.shouldDeleteAccount(result)) {
+                this.deleteAccount();
+            }
+        });
+    };
+
+    private shouldDeleteAccount(result: any): boolean {
+        return result !== "" && result as DeleteAccountEnum === DeleteAccountEnum.Yes
+    };
+
+    private deleteAccount(): void {
+        this._accountService.delete(this.account.Id)
             .subscribe(
                 () => {
                     this.onDeleteAccountEmitter.emit({
                         clientId: this.clientId,
-                        accountId: accountId,
+                        accountId: this.account.Id,
                         usedBy: null,
                         usedFrom: null
                     });

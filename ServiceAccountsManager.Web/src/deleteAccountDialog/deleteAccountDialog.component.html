@@ -1,0 +1,8 @@
+﻿<h1 mat-dialog-title>{{ dialogTitle }}</h1>
+<mat-dialog-content class="mat-dialog-content-options">
+    <p>{{ dialogDescription }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button (click)="deleteAccount()" mat-raised-button color="primary" cdkFocusInitial>Delete</button>
+</mat-dialog-actions>
