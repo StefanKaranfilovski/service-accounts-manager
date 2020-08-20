@@ -4,8 +4,12 @@ import { AccountEmitter } from '../common/models/accountEmitter';
 import { AccountService } from '../common/services/account.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageAccountDialogComponent } from '../manageAccountDialog/manageAccountDialog.component';
-import { DeleteAccountDialogComponent } from '../deleteAccountDialog/deleteAccountDialog.component';
-import { DeleteAccountEnum } from '../common/enums/deleteAccountEnum';
+import { ConfirmationDialogComponent } from '../confirmationDialog/confirmationDialog.component';
+import { ConfirmationEnum } from '../common/enums/confirmationEnum';
+
+const editAccountDialogTitle: string = "Edit Account";
+const deleteConfirmationDialogTitle: string = "Delete account";
+const deleteConfirmationDialogDescription: string = "Are you sure you want to delete the account?";
 
 @Component({
     selector: 'app-account',
@@ -13,8 +17,6 @@ import { DeleteAccountEnum } from '../common/enums/deleteAccountEnum';
     styleUrls: ['./account.component.css']
 })
 export class AccountComponent {
-    editAccountDialogTitle: string = "Edit Account";
-
     @Input() account: Account;
     @Input() currentUser: string;
     @Input() clientId: number;
@@ -66,8 +68,11 @@ export class AccountComponent {
     };
 
     openDeleteAccountDialog(): void {
-        let dialogReference = this.dialog.open(DeleteAccountDialogComponent, {
-            data: { }
+        let dialogReference = this.dialog.open(ConfirmationDialogComponent, {
+            data: {
+                dialogTitle: deleteConfirmationDialogTitle,
+                dialogDescription: deleteConfirmationDialogDescription
+            }
         });
 
         dialogReference.afterClosed().subscribe(result => {
@@ -78,7 +83,7 @@ export class AccountComponent {
     };
 
     private shouldDeleteAccount(result: any): boolean {
-        return result !== "" && result as DeleteAccountEnum === DeleteAccountEnum.Yes
+        return result !== "" && result as ConfirmationEnum === ConfirmationEnum.Yes
     };
 
     private deleteAccount(): void {
@@ -101,7 +106,7 @@ export class AccountComponent {
     openManageAccountDialog(): void {
         let dialogReference = this.dialog.open(ManageAccountDialogComponent, {
             data: {
-                title: this.editAccountDialogTitle,
+                title: editAccountDialogTitle,
                 username: this.account.Username,
                 password: this.account.Password,
                 clientId: this.clientId,

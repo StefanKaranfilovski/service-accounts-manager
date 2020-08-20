@@ -6,13 +6,14 @@ import { AccountEmitter } from '../common/models/accountEmitter';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageAccountDialogComponent } from '../manageAccountDialog/manageAccountDialog.component';
 
+const createAccountDialogTitle: string = "Create new Account";
+
 @Component({
     selector: 'app-client',
     templateUrl: './client.component.html',
     styleUrls: ['./client.component.css']
 })
 export class ClientComponent implements OnInit {
-    createAccountDialogTitle: string = "Create new Account";
     clients: Client[];
     loaded: boolean = false;
 
@@ -65,7 +66,7 @@ export class ClientComponent implements OnInit {
     openManageAccountDialog(clientId: number): void {
         let dialogReference = this.dialog.open(ManageAccountDialogComponent, {
             data: {
-                title: this.createAccountDialogTitle,
+                title: createAccountDialogTitle,
                 username: "",
                 password: "",
                 clientId: clientId
