@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
 import { AccountService } from '../common/services/account.service';
 import { Account } from '../common/models/account';
+import { ManageAccountDialogData } from './manageAccountDialog.data'
 
 @Component({
     selector: 'app-manage-account-dialog',
@@ -10,12 +11,14 @@ import { Account } from '../common/models/account';
     styleUrls: ['./manageAccountDialog.component.css']
 })
 export class ManageAccountDialogComponent {
+    dialogTitle: string;
     username = new FormControl('', [Validators.required]);
     password = new FormControl('', [Validators.required]);
     clientId: number;
     accountId?: number;
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogReference: MatDialogRef<ManageAccountDialogComponent>, private _accountService: AccountService) {
+    constructor(@Inject(MAT_DIALOG_DATA) public data: ManageAccountDialogData, public dialogReference: MatDialogRef<ManageAccountDialogComponent>, private _accountService: AccountService) {
+        this.dialogTitle = data.title;
         this.username.setValue(data.username);
         this.password.setValue(data.password);
         this.clientId = data.clientId;

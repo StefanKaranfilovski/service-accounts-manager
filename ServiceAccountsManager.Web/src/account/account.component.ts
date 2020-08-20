@@ -6,6 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ManageAccountDialogComponent } from '../manageAccountDialog/manageAccountDialog.component';
 import { ConfirmationDialogComponent } from '../confirmationDialog/confirmationDialog.component';
 import { ConfirmationEnum } from '../common/enums/confirmationEnum';
+import { ConfirmationDialogData } from '../confirmationDialog/confirmationDialog.data';
+import { ManageAccountDialogData } from '../manageAccountDialog/manageAccountDialog.data';
 
 const editAccountDialogTitle: string = "Edit Account";
 const deleteConfirmationDialogTitle: string = "Delete account";
@@ -68,11 +70,9 @@ export class AccountComponent {
     };
 
     openDeleteAccountDialog(): void {
+        let dialogData: ConfirmationDialogData = new ConfirmationDialogData(deleteConfirmationDialogTitle, deleteConfirmationDialogDescription);
         let dialogReference = this.dialog.open(ConfirmationDialogComponent, {
-            data: {
-                dialogTitle: deleteConfirmationDialogTitle,
-                dialogDescription: deleteConfirmationDialogDescription
-            }
+            data: dialogData
         });
 
         dialogReference.afterClosed().subscribe(result => {
@@ -104,14 +104,9 @@ export class AccountComponent {
     };
 
     openManageAccountDialog(): void {
+        let dialogData: ManageAccountDialogData = new ManageAccountDialogData(editAccountDialogTitle, this.account.Username, this.account.Password, this.clientId, this.account.Id);
         let dialogReference = this.dialog.open(ManageAccountDialogComponent, {
-            data: {
-                title: editAccountDialogTitle,
-                username: this.account.Username,
-                password: this.account.Password,
-                clientId: this.clientId,
-                accountId: this.account.Id
-            }
+            data: dialogData
         });
 
         dialogReference.afterClosed().subscribe(result => {
