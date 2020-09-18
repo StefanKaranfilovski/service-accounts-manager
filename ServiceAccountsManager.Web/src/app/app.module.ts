@@ -6,32 +6,23 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { NavbarModule } from '../navbar/navbar.module';
 
 import { AppComponent } from './app.component';
 import { LayoutComponent } from '../layout/layout.component';
 import { ClientComponent } from '../client/client.component';
 import { AccountComponent } from '../account/account.component';
-import { NavbarComponent } from '../navbar/navbar.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { ManageAccountDialogComponent } from '../manageAccountDialog/manageAccountDialog.component';
 import { ConfirmationDialogComponent } from '../confirmationDialog/confirmationDialog.component';
 
-import { UserService } from '../common/services/user.service';
-import { ClientService } from '../common/services/client.service';
-import { AccountService } from '../common/services/account.service';
+import { CommonModule } from '../common/common.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { NgrxModule } from './ngrx.module'
+
+
 @NgModule({
-    declarations: [
-        AppComponent,
-        NavbarComponent,
-        LayoutComponent,
-        SidebarComponent,
-        AccountComponent,
-        ClientComponent,
-        ManageAccountDialogComponent,
-        ConfirmationDialogComponent
-    ],
     imports: [
         BrowserModule,
         HttpClientModule,
@@ -40,12 +31,21 @@ import { ReactiveFormsModule } from '@angular/forms';
         MatButtonModule,
         MatFormFieldModule,
         MatInputModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        CommonModule,
+        NavbarModule,
+        NgrxModule
+    ],
+    declarations: [
+        AppComponent,
+        LayoutComponent,
+        SidebarComponent,
+        AccountComponent,
+        ClientComponent,
+        ManageAccountDialogComponent,
+        ConfirmationDialogComponent
     ],
     providers: [
-        UserService,
-        ClientService,
-        AccountService,
         {
             provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {
                 hasBackdrop: true,
