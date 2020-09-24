@@ -8,7 +8,6 @@ import { ClientIdentifier } from '../models/clientIdentifier';
     providedIn: 'root'
 })
 export class ClientService {
-    clients: Client[];
     httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'application/json'

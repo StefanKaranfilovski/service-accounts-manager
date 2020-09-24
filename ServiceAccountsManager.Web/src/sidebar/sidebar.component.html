@@ -8,3 +8,7 @@
         <a [ngClass]="[ client.Checked ? 'sidebar-element-active' : '' ]" (click)="onClientClick(client.Id)" class="nav-link" href="#{{ client.Id }}">{{ client.Name }}</a>
     </li>
 </ul>
+
+<div *ngIf="errorMessage$ | async as errorMessage" class="alert alert-danger">
+    Error: {{ errorMessage }}
+</div>

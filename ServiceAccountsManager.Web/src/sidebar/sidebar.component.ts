@@ -1,6 +1,10 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { ClientService } from '../common/services/client.service';
 import { ClientSidebar } from '../common/models/clientSidebar';
+import { AppState } from '../state/app.state';
+import { Store, select } from '@ngrx/store';
+import * as appActions from '../state/app.actions';
+import * as fromAppReducer from '../state/app.reducer';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-sidebar',
@@ -9,35 +13,22 @@ import { ClientSidebar } from '../common/models/clientSidebar';
 })
 export class SidebarComponent implements OnInit {
     clientsStatus: ClientSidebar[] = [];
+    errorMessage$: Observable<string>;
 
-    constructor(private _clientService: ClientService) { }
+    constructor(private store: Store<AppState>) { }
 
-    ngOnInit() {
-        this._clientService.getClientsNames().subscribe(clientNames => {
-            for (var i = 0, length = clientNames.length; i < length; i++) {
-                this.clientsStatus.push({
-                    Id: clientNames[i].Id,
-                    Name: clientNames[i].Name,
-                    Checked: false
-                });
-            }
-        });
+    ngOnInit(): void {
+        this.errorMessage$ = this.store.pipe(select(fromAppReducer.getClientsNamesError));
+        this.store.dispatch(new appActions.LoadClientsNames());
+        this.store.pipe(select(fromAppReducer.getClientsNames))
+            .subscribe((clientsNames: ClientSidebar[]) => this.clientsStatus = clientsNames);
     };
 
     onClientClick(clientId: number): void {
-        for (var i = 0, length = this.clientsStatus.length; i < length; i++) {
-            var currentEntry = this.clientsStatus[i];
-            if (currentEntry.Id === clientId) {
-                currentEntry.Checked = true;
-            } else {
-                currentEntry.Checked = false;
-            }
-        }
+        this.store.dispatch(new appActions.OnSelectClientName(clientId));
     };
 
     resetClientSelection(): void {
-        for (var i = 0, length = this.clientsStatus.length; i < length; i++) {
-            this.clientsStatus[i].Checked = false;
-        }
+        this.store.dispatch(new appActions.OnResetClientsSelection());
     };
 }

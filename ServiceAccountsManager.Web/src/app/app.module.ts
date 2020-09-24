@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { NavbarModule } from '../navbar/navbar.module';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 import { AppComponent } from './app.component';
 import { LayoutComponent } from '../layout/layout.component';
@@ -33,12 +33,12 @@ import { NgrxModule } from './ngrx.module'
         MatInputModule,
         ReactiveFormsModule,
         CommonModule,
-        NavbarModule,
         NgrxModule
     ],
     declarations: [
         AppComponent,
         LayoutComponent,
+        NavbarComponent,
         SidebarComponent,
         AccountComponent,
         ClientComponent,
