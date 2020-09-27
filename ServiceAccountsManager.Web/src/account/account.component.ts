@@ -1,4 +1,4 @@
-﻿import { Component, Input, Output, EventEmitter } from '@angular/core';
+﻿import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Account } from '../common/models/account';
 import { AccountEmitter } from '../common/models/accountEmitter';
 import { AccountService } from '../common/services/account.service';
@@ -8,6 +8,9 @@ import { ConfirmationDialogComponent } from '../confirmationDialog/confirmationD
 import { ConfirmationEnum } from '../common/enums/confirmationEnum';
 import { ConfirmationDialogData } from '../confirmationDialog/confirmationDialog.data';
 import { ManageAccountDialogData } from '../manageAccountDialog/manageAccountDialog.data';
+import { Store, select } from '@ngrx/store';
+import { AppState } from '../state/app.state';
+import * as fromAppReducer from '../state/app.reducer';
 
 const editAccountDialogTitle: string = "Edit Account";
 const deleteConfirmationDialogTitle: string = "Delete account";
@@ -18,29 +21,35 @@ const deleteConfirmationDialogDescription: string = "Are you sure you want to de
     templateUrl: './account.component.html',
     styleUrls: ['./account.component.css']
 })
-export class AccountComponent {
+export class AccountComponent implements OnInit {
+    currentUsername: string;
     @Input() account: Account;
-    @Input() currentUser: string;
     @Input() clientId: number;
 
     @Output() onUseAccountEmitter = new EventEmitter<AccountEmitter>();
     @Output() onReleaseAccountEmitter = new EventEmitter<AccountEmitter>();
     @Output() onDeleteAccountEmitter = new EventEmitter<AccountEmitter>();
 
-    constructor(private _accountService: AccountService, public dialog: MatDialog) {
+    constructor(private _accountService: AccountService, private store: Store<AppState>, public dialog: MatDialog) {
 
-    };
+    }
+
+    ngOnInit(): void {
+        this.store.pipe(select(fromAppReducer.getCurrentUsername))
+            .subscribe((username: string) => this.currentUsername = username);
+    }
+;
 
     useAccount(accountId: number): void {
         let usedFrom: Date = new Date();
 
-        this._accountService.use(accountId, this.currentUser, usedFrom)
+        this._accountService.use(accountId, this.currentUsername, usedFrom)
             .subscribe(
                 () => {
                     this.onUseAccountEmitter.emit({
                         clientId: this.clientId,
                         accountId: accountId,
-                        usedBy: this.currentUser,
+                        usedBy: this.currentUsername,
                         usedFrom: usedFrom
                     });
                 },

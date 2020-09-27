@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../common/services/user.service';
+import { Store, select } from '@ngrx/store';
+import { AppState } from '../state/app.state';
+import * as fromAppReducer from '../state/app.reducer';
 
 @Component({
   selector: 'app-layout',
@@ -8,24 +10,16 @@ import { UserService } from '../common/services/user.service';
 })
 export class LayoutComponent implements OnInit {
     showSidebar: boolean = true;
-    currentUser: string;
 
-    constructor(private _userService: UserService) {
+    constructor(private store: Store<AppState>) {
 
     };
 
     ngOnInit() {
-        this._userService.getCurrentUser().subscribe(
-            (username) => {
-                this.currentUser = username;
-            },
-            (error) => {
-                console.log(error);
+        this.store.pipe(select(fromAppReducer.getShowSidebar)).subscribe(
+            (showSidebar: boolean) => {
+                this.showSidebar = showSidebar;
             }
         );
-    };
-
-    onToggleSidebar(showSidebar: boolean){
-        this.showSidebar = showSidebar;
     };
 }

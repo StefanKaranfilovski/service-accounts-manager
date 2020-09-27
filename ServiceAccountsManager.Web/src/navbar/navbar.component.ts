@@ -1,4 +1,4 @@
-﻿import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../state/app.state';
 import * as appActions from '../state/app.actions';
@@ -12,9 +12,7 @@ import * as fromAppReducer from '../state/app.reducer';
 export class NavbarComponent implements OnInit {
     applicationName: string = 'Service Accounts Manager';
     showSidebar: boolean;
-
-    @Input() currentUser: string;
-    @Output() toggleSidebar = new EventEmitter<boolean>();
+    currentUsername: string;
 
     constructor(private store: Store<AppState>) {
         
@@ -26,12 +24,13 @@ export class NavbarComponent implements OnInit {
                 this.showSidebar = showSidebar;
             }
         );
+
+        this.store.dispatch(new appActions.GetCurrentUsername());
+        this.store.pipe(select(fromAppReducer.getCurrentUsername))
+            .subscribe((username: string) => this.currentUsername = username);
     }
 ;
-
     onToggleSidebar() {
-        this.store.dispatch(new appActions.ToggleSidebar(!this.showSidebar));
-
-        this.toggleSidebar.emit(this.showSidebar);
+        this.store.dispatch(new appActions.ToggleSidebar());
     };
 }

@@ -18,8 +18,6 @@ export class ClientComponent implements OnInit {
     clients: Client[];
     loaded: boolean = false;
 
-    @Input() currentUser: string;
-
     constructor(private _clientService: ClientService, public dialog: MatDialog) { }
 
     ngOnInit() {

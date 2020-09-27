@@ -10,6 +10,11 @@ export const getShowSidebar = createSelector(
     state => state.showSidebar
 );
 
+export const getCurrentUsername = createSelector(
+    getAppState,
+    state => state.username
+);
+
 export const getClientsNames = createSelector(
     getAppState,
     state => state.clientsNames
@@ -22,6 +27,8 @@ export const getClientsNamesError = createSelector(
 
 const initialState: AppState = {
     showSidebar: true,
+    username: '',
+    usernameError: '',
     clientsNames: [],
     clientsNamesError: ''
 };
@@ -32,7 +39,21 @@ export function reducer(state = initialState, action: AppActions): AppState {
         case AppActionTypes.ToggleSidebar:
             return {
                 ...state,
-                showSidebar: action.payload
+                showSidebar: !state.showSidebar
+            };
+
+        case AppActionTypes.GetCurrentUsernameSuccess:
+            return {
+                ...state,
+                username: action.payload,
+                usernameError: ''
+            };
+
+        case AppActionTypes.GetCurrentUsernameFailed:
+            return {
+                ...state,
+                username: '',
+                usernameError: action.payload
             };
 
         case AppActionTypes.LoadClientsNamesSuccess:
